@@ -1,0 +1,11 @@
+D:\visual\GRAPHIC\GRAPHIC\bin\Debug\GRAPHIC.exe.config
+D:\visual\GRAPHIC\GRAPHIC\bin\Debug\GRAPHIC.exe
+D:\visual\GRAPHIC\GRAPHIC\bin\Debug\GRAPHIC.pdb
+D:\visual\GRAPHIC\GRAPHIC\obj\Debug\GRAPHIC.csproj.AssemblyReference.cache
+D:\visual\GRAPHIC\GRAPHIC\obj\Debug\GRAPHIC.csproj.SuggestedBindingRedirects.cache
+D:\visual\GRAPHIC\GRAPHIC\obj\Debug\GRAPHIC.Form1.resources
+D:\visual\GRAPHIC\GRAPHIC\obj\Debug\GRAPHIC.Properties.Resources.resources
+D:\visual\GRAPHIC\GRAPHIC\obj\Debug\GRAPHIC.csproj.GenerateResource.cache
+D:\visual\GRAPHIC\GRAPHIC\obj\Debug\GRAPHIC.csproj.CoreCompileInputs.cache
+D:\visual\GRAPHIC\GRAPHIC\obj\Debug\GRAPHIC.exe
+D:\visual\GRAPHIC\GRAPHIC\obj\Debug\GRAPHIC.pdb

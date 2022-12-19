@@ -52,7 +52,8 @@ namespace GRAPHIC
                 {
                     this.chart.Update();
 
-                    this.chart.Series[1].Points.Add(((((x * x) + (2 * x) * (x - b) - 600) *5))/1000);
+                    this.chart.Series[1].Points.AddXY(x, tangent(3, x));
+                 //   this.chart.Series[1].Points.Add(((((x * x) + (2 * x) * (x - b) - 600) *5))/1000);
                     x += h;
                 }
 
@@ -60,6 +61,22 @@ namespace GRAPHIC
             timer1.Enabled = false;
 
         }
+
+        private double f(double x)
+        {
+            return Math.Pow(x, 2);
+        }
+
+        private double f_dx(double x)
+        {
+            return (f(x + 0.05) - f(x)) / (0.05);
+        }
+
+        private double tangent(double x0, double x)
+        {
+            return f_dx(x0) * (x - x0) + f(x0);
+        }
+
         public void timer1_Tick(object sender, EventArgs e)
         {
             Build_a_Graph(sender, e);

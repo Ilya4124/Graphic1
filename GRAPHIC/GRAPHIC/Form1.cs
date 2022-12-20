@@ -6,19 +6,15 @@ namespace GRAPHIC
     public partial class Form1 : Form
     {
         private double a, b, h;
-        private double x, y;
+        private double x0, y;
         public Form1()
         {
             InitializeComponent();
         }
-    
-        public void Build_a_Graph(object sender, EventArgs e)
+
+
+        public void InsertParams()
         {
-            if (checkBox_sin.Checked == false && checkBox_tan.Checked == false)
-            {
-                MessageBox.Show("Choose a graphic!", "Warning!");
-                return;
-            }
             if (textBox_a.Text == "" || textBox_b.Text == "" || textBox_h.Text == "")
             {
                 MessageBox.Show("Default value!", "Warning!");
@@ -30,33 +26,46 @@ namespace GRAPHIC
                 b = Convert.ToDouble(textBox_b.Text);
                 h = Convert.ToDouble(textBox_h.Text);
             }
+        }
+        public void Build_a_Graph(object sender, EventArgs e)
+        {
+            if (checkBox_sin.Checked == false && checkBox_tan.Checked == false)
+            {
+                MessageBox.Show("Choose a graphic!", "Warning!");
+                return;
+            }
+
+            InsertParams();
             timer1.Enabled = true;
 
             if (checkBox_sin.Checked)
             {
-                x = a;
+                x0 = a;
                 this.chart.Series[0].Points.Clear();
-                while (x <= b)
+                while (x0 <= b)
                 {
                     this.chart.Update();
-                    y = Math.Pow(x,2);
-                    this.chart.Series[0].Points.AddXY(x,y);
-                    x += h;
+                    y = Math.Pow(x0, 2);
+                    this.chart.Series[0].Points.AddXY(x0, y);
+                    x0 += h;
                 }
             }
             if (checkBox_tan.Checked)
             {
-                x = a;
-                this.chart.Series[1].Points.Clear();
-                while (x <= b)
+                x0 = a;
+                while (x0 <= b)
                 {
-                    this.chart.Update();
-
-                    this.chart.Series[1].Points.AddXY(x, tangent(3, x));
-                 //   this.chart.Series[1].Points.Add(((((x * x) + (2 * x) * (x - b) - 600) *5))/1000);
-                    x += h;
+                    if (checkbox_clear.Checked == true)
+                    {
+                        this.chart.Series[1].Points.Clear();
+                    }
+                    for (double i = x0 - 5; i <= x0 + 5; i += 0.5)
+                    {
+                        this.chart.Series[1].Points.AddXY(i, tangent(x0, i));
+                        this.chart.Update();
+                    }
+                    x0 += h;
                 }
-
             }
             timer1.Enabled = false;
 
@@ -82,6 +91,9 @@ namespace GRAPHIC
             Build_a_Graph(sender, e);
         }
 
+        private void Tangent_Clear(object sender, EventArgs e)
+        {
+        }
 
         public void ClearGraph(object sender, EventArgs e)
         {
@@ -98,6 +110,7 @@ namespace GRAPHIC
             {
                 this.chart.Series[1].Points.Clear();
             }
+
         }
 
         public void Close_a_Graph(object sender, EventArgs e)
@@ -109,8 +122,8 @@ namespace GRAPHIC
         }
         public void DefaultParams()
         {
-            a = -10;
-            b = 10;
+            a = -5;
+            b = 4;
             h = 0.1;
         }
     }
